@@ -175,7 +175,7 @@
   - inline 태그는 높이와 폭에 대한 값을 특정할 수 없음 (해당 element를 포함할 수 있는 충분한 크기를 알아서 사용)
 - Common Tags
 
-- Headings (block) - <h1>, <h2>, ..., <h6> 
+- Headings (block) - `<h1>`, `<h2>`, ..., `<h6>` 
   - 이 태그들은 syntax & semantics 둘 다 가지고 있음 - syntax : 브라우저야 <h1> 태그에 해당하는 text들은 가장 크고 가장 두꺼운 글씨체로 만들어줘 - semantics : <h1>의 내용은 <h5>의 내용보다 훨씬 더 중요하다는 것을 암시(또는 의미함)
 
     - Paragraphs (block)
