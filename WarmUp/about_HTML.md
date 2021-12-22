@@ -149,7 +149,7 @@
 
   - Doctype : 사용할 HTML의 버전
 
-    <!DOCTYPE html>
+    [!DOCTYPE html]
 
   HTML5 이전에는 위처럼 간단히 작성못하고 추가적으로 적어야할 구체적인 내용들이 필요했음
 
@@ -168,7 +168,7 @@
 # HTML5 Tags and Syntax
 
 - closing tags
-  - start tag 와 close tag 사이에 text를 타이핑할 여지가 없는 tag들 (ex. <image />)은 self closing tag를 사용
+  - start tag 와 close tag 사이에 text를 타이핑할 여지가 없는 tag들 (ex. [image])은 self closing tag를 사용
 - Display
   - display types의 가장 보편 적인 두 가지는 block & inline
   - block 태그는 높이와 폭에 대한 값을 특정할 수 있음 (default : whole width) -> 서로다른 block 태그를 다른 라인에 출력
@@ -179,10 +179,10 @@
   - 이 태그들은 syntax & semantics 둘 다 가지고 있음 - syntax : 브라우저야 h1 태그에 해당하는 text들은 가장 크고 가장 두꺼운 글씨체로 만들어줘 - semantics : h1의 내용은 h5의 내용보다 훨씬 더 중요하다는 것을 암시(또는 의미함)
 
     - Paragraphs (block)
-      - <p> ... </p>
+      - [p] ... [/p]
       - p tag 내부에는 오직 inline elements만 들어갈 수 있음 (text, some pictures ...)
     - Divs (block)
-      - <div> ... </div>
+      - [div] ... </div>
       - pargraph보다 크면서 서로 관련이 있는 컨텐트들 단위로 나누고 싶을 때 <div> 단위로 나눔
 
   - More tags
