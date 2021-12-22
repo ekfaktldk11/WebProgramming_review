@@ -141,8 +141,8 @@
 - 여기에 'DOM 이미지 필요'
 - DOM의 root element인 html을 만들 때 우리는 크게 두 가지 부분으로 나눌 수 있음
 
-  - <head> : 유저가 눈으로 확인 불가능한 것의 대부분이 여기에 포함됨 -> meta data 같은 사용자들이 신경쓰지 않는 것들
-  - <body> : 유저에게 보여지는 부분으로 html5의 대부분의 태그들이 여기에 속함
+  - [head] : 유저가 눈으로 확인 불가능한 것의 대부분이 여기에 포함됨 -> meta data 같은 사용자들이 신경쓰지 않는 것들
+  - [body] : 유저에게 보여지는 부분으로 html5의 대부분의 태그들이 여기에 속함
     -> Display content
 
 - Three part of a well-formed document
@@ -171,12 +171,12 @@
   - start tag 와 close tag 사이에 text를 타이핑할 여지가 없는 tag들 (ex. <image />)은 self closing tag를 사용
 - Display
   - display types의 가장 보편 적인 두 가지는 block & inline
-  - block 태그는 높이와 폭에 대한 값을 특정할 수 있음 (default : whole width)
-  - inline 태그는 높이와 폭에 대한 값을 특정할 수 없음 (해당 element를 포함할 수 있는 충분한 크기를 알아서 사용)
+  - block 태그는 높이와 폭에 대한 값을 특정할 수 있음 (default : whole width) -> 서로다른 block 태그를 다른 라인에 출력
+  - inline 태그는 높이와 폭에 대한 값을 특정할 수 없음 (해당 element를 포함할 수 있는 충분한 크기를 알아서 사용) -> 서로다른 inline 태그를 같은 라인에 출력
 - Common Tags
 
-- Headings (block) - `<h1>`, `<h2>`, ..., `<h6>` 
-  - 이 태그들은 syntax & semantics 둘 다 가지고 있음 - syntax : 브라우저야 <h1> 태그에 해당하는 text들은 가장 크고 가장 두꺼운 글씨체로 만들어줘 - semantics : <h1>의 내용은 <h5>의 내용보다 훨씬 더 중요하다는 것을 암시(또는 의미함)
+- Headings (block) - h1, h2, ..., h6 
+  - 이 태그들은 syntax & semantics 둘 다 가지고 있음 - syntax : 브라우저야 h1 태그에 해당하는 text들은 가장 크고 가장 두꺼운 글씨체로 만들어줘 - semantics : h1의 내용은 h5의 내용보다 훨씬 더 중요하다는 것을 암시(또는 의미함)
 
     - Paragraphs (block)
       - <p> ... </p>
@@ -399,3 +399,109 @@
   - 멀티미디어 리소스를 남발하면 산만해질 수 있음
 
 - Tables
+  - 코딩전에 테이블 레이아웃을 디자인
+      - rows & columns 설정
+      - 어떤 특정한 rows/columns 를 확장(span) 할지
+  - [table]
+      - [th]...[/th] - attr_name_of_table (=table headings / auto bold)
+      - [tr]...[/tr] - the rows
+      - [td]...[/td] - the columns
+  - Spanning Multiple Cells
+      - 테이블의 grid 형태가 온전치 않을때 Span 을 사용
+      - rowspan/colspan attr 사용해서 조정
+  - The Border Attribute
+      - [table] 에는 많은 attr이 있지만 .html 에서는 table attr을 이용하여 하는 스타일링을 피하고 .css으로 꾸며주는게 좋음
+      (그냥 왠만하면 .html 에서의 스타일링은 피하고 .css 에서 스타일링 하는 게 좋을 거임)
+  - Captions
+      - 테이블에 특정한 텍스트를 링크할 때 h2 or h3 같은 heading을 넣는 것 보다는 caption 태그를 사용하는 것이 더 의미론적(semantics)으로 명확함
+
+- Useful tags
+    - for Generic(포괄적인 ~ 그룹형성)
+        - [p] 
+        - [div]
+        - 위 태그들은 내 코드를 조직화 및 부분화를 잘 시켜줌
+    - Semantic(Generic 내에서도 의미가 있는 부분) 
+        - [header]
+        - [nav]
+        - [footer]
+        - [figure]
+    - Block Tags
+        - Containers
+            - [artice], [aside], [section], [main], etc
+            - 의미가 비슷한 것들을 함께 넣을 때 사용하는 태그들
+            - Generic 처럼 보이지만 코딩하다보면 그게 아니라는 것을 알게됨
+        - [hr] : horizontal rule (do not contain any text at all)
+            - 블록간의 공간을 나타내줄 때 사용
+            - bottom border line 같은 느낌 (얇은 회색 직선)
+        - [address]
+            - default 로 *이탤릭체*로 보여짐
+            - screen readers 같은 assistive devices가 빠르고 쉽게 내 address에 접근할 수 있도록 도와줌
+        - [blockquote] -> 'cite' attr
+            - 인용문을 표시할 때 사용하는 태그
+            - default로 들여쓰기가 됨
+            - 'cite' attr 은 인용문의 출처를 표시할 때 사용 -> cite="url"
+            - 또 인용문의 출처를 적을 때 'cite' *tag* 를 사용하던데 이건 예시같은거 확인해 보자
+        - [details] with [summary]
+            - drop down 형태로 숨겨진 텍스트를 확인할 때 사용 (with summary tag)
+            - firefox 에서는 지원을 안해서 그냥 열린채로 보여짐
+    - Inline Tags
+        - [span]
+            - 대표적인 인라인 태그
+            - 정해진 역할이 없음
+            - styling with css
+        - [cite] : 기울어진 글씨체, 하이퍼 링크 형태
+        - [abbr] : abbreviation tag
+            - 텍스트에 커서를 올리면 올라오는 네모 박스에 텍스트를 작성할 때 사용
+        - [time] 
+            - 브라우저에게 이 글이 언제 작성된 것인지 알려줌
+            - datetime 을 표기할 때 사용
+            - ex. [time datetime="2021-12-22T:07:15:15+09:00"]
+            -> 서울 타임존에 있는 2021년 12월 22일 07시 15분 15초를 의미
+        - [code]
+            - 컴퓨터 코드의 일부분을 나타낼 때 사용
+            - 기계언어, 파일 이름 등 컴퓨터가 인식할 수 있는 모든 문자열이 컴퓨터 코드에 포함됨
+        - [sub] & [sup] (subscript & superscript)
+            - 수학 공식을 적을 때 사용
+
+- Tags that need "more" : JS와 함께 작성되어야 의미 있는 Tag들
+  - [button]
+  - [meter] : 'min', 'max', 'value' 이 세가지의 attr의 값을 정해서 value/(max-min) 비율로 누운 형태의 막대 그래플를 색칠(?)
+  - [progress] : 진행 상태를 나타냄 [lllllll----] 요런 느낌으로
+  - [iframe] : 다른 웹페이지를 보여주는 viewer 느낌
+      - 'src' attr 에 있는 url의 웹페이지를 뷰어 형태로 보여줌
+  - [bdo] (bi-directional orientation - 양방향)
+      - 글자 거꾸로 쓸때 (난진석 -> 석진난)
+      - dir = "rtl"(rigth to left) / "ltr"
+  - [map] with [area] -> area tag로 클릭가능한 영역을 생성
+
+- 가능한 한 가장 구체적인 태그를 사용(html의 모든 태그 기능을 굳이 사용하는 것을 지양)
+- Validator 자주 사용하고, 또 많은 브라우저에 실행해보자
+
+- Accessibility
+  - 접근성이 좋은 웹페이지를 만드는게 정말 중요
+  - 접근성이 좋은 웹페이지를 만드는 개발자가 가져야할 덕목
+      - 항시 웹 접근성을 평가
+      - 장애인들도 온라인 인프라를 접근할 수 있도록
+          - 인지 장애 -> 정서불안, 난독증, 환공포증, 트라우마(PTSD)관련
+          - 시각 장애 -> 글자크기, 색맹(약)컬러링
+          - 청각 장애 -> 볼륨조절, 영상자막
+          - 입력 관련 -> 키보드, 마우스
+          - screen reader(화면 낭독 소프트웨어)가 대표적임
+      - 변화하는 기술에 관심을 가짐
+  - 그래서 접근성이 좋은 웹페이지란 게 뭔데?
+      - 방대한, 가능한 한 많은 사람들이 접근하고 사용할 수 있는 웹
+      - 사용자라는 것은 여러 장애인들을 포함
+      - 접근 가능한 사용자들에게 제공하는 웹이 아닌 사용자들에게 접근 가능한 웹을 제공하는 마인드를 장착
+      - 디바이스 환경에 독립적인 웹을 구축(모바일, 랩탑 etc)
+      - 웹 규격을 고수(준수)
+      - W3C WCAG 2.0 (Web Content Accessibility Guidelines) 의 네 가지 원칙!
+          - Perceivable (인지가능한)
+          - Operable (작동가능한)
+          - Uderstandable (이해가능한)
+          - Robust (탄탄한)
+      - 화려하고 멋진 것에 초점을 두기보단 기본을 고수하고 기본에 충실한 것
+      - HTML5 tag 들의 의미에 초점을 두어서 웹을 구성 
+          - HTML5 의 tag들은 모두 만들어진 데는 다 이유가 있음
+          - 각 tag들이 어디에서 적절하게 쓰이는 지 확실히 알고 필요에 따라 .html을 구성하면 좀 더 사용자들이 이해하기 쉽고 접근성이 좋은 웹구성이 가능함
+
+- Validating Your Site (사이트 인증)
