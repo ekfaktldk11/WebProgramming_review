@@ -504,4 +504,41 @@
           - HTML5 의 tag들은 모두 만들어진 데는 다 이유가 있음
           - 각 tag들이 어디에서 적절하게 쓰이는 지 확실히 알고 필요에 따라 .html을 구성하면 좀 더 사용자들이 이해하기 쉽고 접근성이 좋은 웹구성이 가능함
 
-- Validating Your Site (사이트 인증)
+- Validating Your Site (사이트 인증) (w3.validator 사용해서 ~)
+    - validate 하는 이유 ?
+        - 내가 개발한 웹 코드들이 보기엔 nice 할 수 도 있겠지만 여기서 check를 끝내는게 아님
+        - 브라우저는 웹 코드의 에러를 발견하고 고치도록 프로그램 되어있음
+        - 각 브라우저들 마다 웹 코드의 에러를 발견하고 고치는 과정이 다르고 모든 사람이 내가 테스트한 브라우저를 사용하는 것이 아니기 때문에 모든 브라우저에 대한 validation이 필요함
+        - 내가 만든 웹사이트가 점점 더 복잡해 질 수록 숨겨진 문제들이 많아질 확률이 높음
+    - Three approaches of Validation
+        - validate by uri(or url)
+            - validator에 내 사이트의 uri를 입력해서 확인
+            - 유명한 사이트일 수록 여기서 뜨는 오류들이 많은 경향이 있음
+            - 이 오류들을 체크해서 해결하지 않으면 안되는 것들에 대한 핸들링이 필요할 거임
+        - validate by Filename
+            - .html 파일 업로드
+        - validate by Direct Input
+            - 이거는 validator에 html code ctrl + c , v
+    ※ 여기서 잠깐!
+    - uri <-> url 차이 ?
+        - uri 는 특정 리소스를 식별하는 통합 자원 식별자 (uniform resource identifier)를 의미, 웹 기술에서 사용하는 논리적 또는 물리적 리소스를 식벼랗는 고유한 문자열 시퀀스 ex. ISBN 0-486-12345-8
+        - url 은 웹 주소 라고도 하며, 컴퓨터 네트워크 상에서 리소스가 어디 있는지 알려주기 위한 규약 (uri에 포함되는 개념)
+        - uri 는 특정 리소스를 식별할 수 있는 정도의 레벨이고, url은 특정 리소스의 위치까지 특정할 수 있어야 함
+        ex. naver.com/index.html (uri 이자 url)
+        ex. naver.com/index (not url but uri) -> 이 경우엔 서버 내부에서 이를 처리해주어 index.html로 가리키게 함
+    - Accessibility Validation
+        - wave.webaim.org 에서 접근성 validation
+        - 여기선 file 업로드나 코드 고대로 넣을 수 없고, url로 넣어줘야함
+        - 위 사이트에 들어가서 url을 검색하는 것 보단, wave 확장프로그램 다운 받아서 validation 하고 싶은 사이트에 들어가서 버튼 하나 딸깍누르면 해당 페이지에서 accessibility validation 이 가능함
+        - accessibility validation 에서 주로 나오는 에러
+            - missing alternative text ([image]의 attr 인 'alt'에 할당된 text가 없을 경우) -> 매번 언급하는 것이지만, 이미지가 불러와 지지 않았을 때, 사용자들에게 혼란을 일으킬 수 있을 경우, [image] 에 있는 'alt' attr에 적절한 text를 넣어주는 것이 정말 중요 
+            - empty links ([link]의 attr인 'href' 에 할당된 url 정보가 없을 경우)
+            - redundant links ([link]의 attr인 'href' 에 불필요한 정보가 포함된 경우(불필요한 매개변수 들)) -> 이 url 을 주소창을 공유하거나 입력하면 원하는 웹사이트를 열 수는 있지만, 때로는 불필요한 문자열이 방해가 될 수 있음
+
+- Testing your Site with Funkify
+  - wave 처럼 확장프로그램으로 다운 후 버튼 하나로 딸깍
+  - 장애나 트라우마를 가진 사람들이 이 웹페이지를 사용했을 때의 상황들을 재현하여 해당되는 사람들에게 웹페이지의 접근성에 대한 정성적 평가를 할 때 사용됨
+
+- Hosting Your Site (내가 개발한 웹 사이트를 인터넷에 올려서 사람들이 볼 수 있게끔)
+  - Domain Names
+  - Hosting Compainy
