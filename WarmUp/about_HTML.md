@@ -541,4 +541,37 @@
 
 - Hosting Your Site (내가 개발한 웹 사이트를 인터넷에 올려서 사람들이 볼 수 있게끔)
   - Domain Names
+      - 도메인 네임은 1년 단위가 아닌 수년단위로 구매
+      - 보편적으로 .com 을 구매하지만, .net, .biz 등 여러가지 해도 문제는 되지않음
+      - 도메인 네임 그 자체로는 쓸모가 없음. 호스팅 서비스 없는 도메인 네임으로는 유저가 사이트에 있는 정보들을 확인 불가함(유저들이 브라우저에 렌더링되는 해당 파일들을 받아오지 못함)
   - Hosting Compainy
+      - 호스팅이란 내 도메인 네임과 연결되는 (맵핑 되는) registered IP addr 이 필요함
+      - 호스팅 서비스는 다양함 : Free(recommended at the first time), Mid-range, Full-service
+      - Free hosting service
+          - 도메인 네임에 대해 필요한 컨트롤이 없거나 적음
+          - Limited tools : 기능이 적음 (뭐 이메일 기능이 없음 -> 내 도메인을 사용하는 이메일 기능)
+          - Advertising and redirects : 광고가 여기 저기 들어가 있고, 내 사이트의 사용자로 인해 typo 가 발생하면(?) 친절한 경고를 주는 대신, 사용자에게 광고 사이트로 리다이렉트 해주는 경우가 발생
+          - 하지만 Free service 만으로도 친숙한 룩과 느낌을 받을 수 있음
+      - Paid hosting service (mid-range, full-service)
+          - 수 많은 기능들을 사용할 수 있음 (해당 도메인의 이메일, 이메일 필터 기능)
+          - 도메인 만의 데이터베이스, 리스트 서버, 이메일 등을 가지고 싶으면 paid services 를 이용하는 것이 좋음
+          - technical support is avaliable -> 이메일 chat 같은 기능들
+          - 하지만 paid service를 사용하기 전에 free service 한번 사용해 보고 그 다음에 결정하는 것이 좋음 -> free service 에서 제공하는 기능및 서포트만으로도 충분할 수 있기에
+
+- CPanel
+  - 내가 만든 웹사이트를 웹에 올릴 때 사용하는 인터페이스
+      - Connecting to CPanel
+          - CPanel 계정 생성 (url 하나당 계정이 하나 생성되나 봄)
+          - CPanel에 연결하기 위해선 내 cPanel account 를 위한 url이 필요 -> domain name or hosting service domain name
+          - CPanel 계정의 비밀번호는 꼭 어디 적어두라. 이거 잊어버리면 문제가 많아짐
+      - CPanel의 File Manager 를 통해 웹 파일을 관리
+      - File manager에 있는 public_html(or public) 디렉토리에는 사람들에게 보여져도 괜찮은 파일들만을 올려두자
+      -> public_html 폴더에 image.html을 올림 / blarblar.com/image.html 을 입력하면 해당 파일이 브라우저에 렌더링 되는 것을 확인 가능함
+      - 여기서 내 파일이 제대로 보여지지 않는다면 ??
+          - wrong url을 입력했거나
+          - CPanel에 파일을 올렸을 때 transfer가 오작동을 일으켰거나 -> 이 경우는 warning message 를 주기 때문에, 이런 message를 잘 확인하자
+          - read access 가 없거나 -> CPanel 에서 파일 업로드 할 때 read access 에 대한 조정이 가능하니 여기 설정에 유의(User? Group? World?)
+          - 예를들어 image.html을 올렸을 경우, html 소스내에 [img] 의 src attr 의 이미지 파일 루트를 확인해서 CPanel의 File manager에도 해당 루트에 파일이 있어야함 
+      - CPanel의 버전은 내가 paid / free hosting service를 사용하는지에 따라 다름
+      - 하지만 이 교수님은 CPanel로 파일 관리하는것을 비추함. 웬만하면 로컬에서 작업하라고 함
+      - CPanel 관련해서는 나중에 웹 퍼블리싱할때 자세하게 알아보자
