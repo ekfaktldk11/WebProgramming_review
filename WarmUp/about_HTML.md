@@ -575,3 +575,20 @@
       - CPanel의 버전은 내가 paid / free hosting service를 사용하는지에 따라 다름
       - 하지만 이 교수님은 CPanel로 파일 관리하는것을 비추함. 웬만하면 로컬에서 작업하라고 함
       - CPanel 관련해서는 나중에 웹 퍼블리싱할때 자세하게 알아보자
+
+- Creating a GitHub Pages Account
+    - 깃 리포지토리에 프로젝트 폴더를 올리면 깃에서 알아서 index.html 파일을 찾아서 자체 서버로 웹 사이트를 호스팅 해줌
+    - 리포지토리 - '세팅' 페이지에서 스크롤 내리다보면 발견가능
+
+- Using Secure File Transfer Protocol(SFTP)
+      - SFTP/FTP 를 사용하면 내가 만든 파일들(웹소스들)을 W3 내에서 안전하게 이동시켜줌
+      - http/https 와 다르게 받아온 파일을 브라우저에 표시하는게 아니라 컴퓨터 사이의 파일 전송 프로토콜임
+      - drag and drop
+      - FTP 를 하기위해 필요한 것들
+          1. FTP Client를 찾음(download) -> 서로 다른 두 컴퓨터장치를 연결해주는 소프트웨어임
+              - PC : winSCP
+              - Mac - fugu/cyberduck
+              - all free for download, 위 소프트웨어를 다운받고 소프트웨어를 사용하면, 예를 들어 웹 서버에 연결하면(도메인, portNum, userName, pw 입력), 웹 서버에 있는 public_html(or public)폴더에 drag & drop 형태로 파일을 집어넣어 주거나 해당 폴더의 파일을 다운받거나, 파일 이름을 수정하는 등, 웹 소스 관리도 가능함
+          2. 내 사이트(호스트)의 FTP addr 을 확인
+              - Hosting service에 가입하면 여러 정보들을 메일로 보내주는데 거기엔 FTP addr 도 포함되어 있음
+
