@@ -1,0 +1,45 @@
+h1{
+  background: #B3B3B3;
+  font-size: 150%;
+  margin: 4%;
+}
+
+header{
+  background: #666666;
+  text-align: center;
+  padding: 15px;
+}
+
+h2{
+  color: #FFFFFF;
+}
+
+section{
+  width: 30%;
+  display: inline-block;
+  float: left;
+  margin-right: 2%;
+}
+
+nav{
+  font-variant: small-caps;
+  font-size: 150%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+details{
+  font-style: italic;
+}
+
+summary{
+  font-style: normal;
+}
+
+footer{
+  background: #666666;
+  clear: both;
+}
+
+img{
+  width:75px;
+}

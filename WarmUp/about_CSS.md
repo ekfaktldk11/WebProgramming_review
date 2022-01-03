@@ -97,4 +97,128 @@
       - web safe 색상을 사용하고, 규약에 어긋나지 않는 컬러링을 하자
       - webaim의 contrast checker로 내 사이트를 테스트해서 색 대비 가 적절한지 확인해보자
 
-   
+- Styling Your Text
+  - Text Styling Option
+      - font family (글꼴)
+          - 각 브라우저마다 지원하지 않는 글꼴이 있기 때문에 alternative 글꼴을 넣어주는 것도 좋은 방법
+              -> h1, span {
+                font-family: Courier, Impact, Arial;
+              } // 뒤로 갈수록 후순위 적용
+      - font style (굵기? 기울어짐?)
+          - normal : default
+          - italic : 기울어짐
+          - oblique : 각(?)
+      - font variant 
+          - normal 
+          - small-caps : 단어 첫 글자의 크기를 다른 글자보다 크게하고, 소문자를 대문자화
+      - font size (크기)
+      - color, background ()
+      - alignment (글자 정렬)
+          - left
+          - right
+          - center
+          - justify : 해당 요소가 가지고 있는 모든 공간을 최대한 사용해서 ~
+          -> word 파일 보면 문장마다 공백의 크기가 다른거 생각하면됨. 약간 공간에 아이템들을 고르게 분포시키는 듯한 느낌
+      - line-height (줄 간격)
+
+- Display and Visibility - Part 1
+  - Display is Key to Layout
+      - 모든 요소들(</>)은 박스형태임
+      - 요소마다의 Display가 각 다른 요소들에게 영향을 미침
+  - Common Values
+      - inline {display : inline;}
+          - '이 글씨에 *이태릭* 효과를 주었다' 처럼 text 내에 특정 부분에만 스타일을 간단히 줄 때 많이 사용됨
+          - 적당한 높이와 폭을 가지고 있음
+          - width/height 적용 불가
+          - margin/padding-top/bottom 적용 불가
+      - block {display : block;}
+          - 적당한 높이 & 전체 폭을 가지고 있음
+          - 높이와 폭을 조정가능
+          - block Tag는 무조건 한줄을 점유함 -> 다음 태그는 다음 줄로 가버림
+      - inline-block {display:block;}
+          - inline과 전반적으로 비슷
+          - 동일 라인에 여러 태그를 붙일 때 사용
+          - width/heigh 적용 가능
+          - margin/padding-top/bottom 적용 가능
+          - line-height 적용 가능
+          - inline-block 끼리 공백이 생기게 되는데, 이때는 상위 div에 {font-size:0;} 을 적용하면 해결 가능
+          - inline-block 끼리 높이가 안맞을 때, 상위 공백이 생기는데, 이때는 {vertical-align:---;} 값으로 top 부분을 맞춰주면 해결 가능 (또는 float:left;)
+      - none {display:none;}
+          - 해당 태그를 숨겨줌
+          - css 파일 수정단계에서 웹 페이지의 검사 기능을 사용할때 활용하는 display value
+  - Complementary Properties
+      - float
+          - : right -> 해당 요소를 가능한 최대로 오른쪽에 배치 시키고 픔
+          - : left -> 해당 요소를 가능한 최대로 왼쪽에 배치 시키고 픔
+      - clear (float로 인해 서로다른 요소들이 overlap(겹치는)되는 경우를 방지하기 위해)
+          - : right -> { float : right } 가 주변에 없다는 것을 알려줌
+          - : left -> { float : left } 가 주변에 없다는 것을 알려줌
+          - : both -> { float : right } & { float : left } 가 주변에 없다는 것을 알려줌
+
+- Display and Visibility - Part 2
+  - Element Overflow
+      - 웹 페이지의 크기가 줄고 늘어남에 따라 태그들의 크기는 변화하지만, 태그안에 글자가 있는 경우, 글자의 pixel이 그대로면 overflow 상황이 자주 발생 -> 핸들링이 필요
+      - 4 values of Overflow
+          - visible : 박스 밖으로 튀어나와도 그대로 보여주도록 할 경우
+          - hidden : 박스 밖으로 나가는 것들은 숨길 경우
+          - scroll : 수평 및 수직 스크롤바를 제공
+          - auto : 필요한 만큼 스크롤바를 줌
+  - Other Display Values
+      - 최근부터 지원되는 { display : attr; } 들로, 아직은 모든 브라우저에서 지원되지는 않음
+          - Table
+              - table-like layout -> 실제 [table]은 아니지만 table 형식으로 요소들을 배치시키고 싶을 경우 사용
+              - { display:table; }을 사용한 태그 안의 child 태그들은 { display:table-cell; }을 명시해줘야 함
+          - Grid
+          - Flexbox
+  - Visibility
+      - 하나의 요소를 보여지게 하거나 보여지지 않게 하거나 를 조정
+      - { display:none; }은 해당 element 자체가 존재하지 않는 것 처럼 보이지만 { visibility:hidden; } 은 해당 요소의 공간은 존재. 콘텐츠 내용이 안보일 뿐.
+      - Options include:
+          - visible
+          - hidden
+          - collapse (only for table elements)
+
+- Box Model
+  - Height and Width
+      - inline 태그의 width는 해당 요소 그자체의 폭 값을 가짐. -> [link] 면 link의 text가 차지하는 폭만큼을 폭으로 가짐
+  - Border
+      - 하나의 요소가 가지는 높이와 폭이 얼마만큼인지 눈으로 보고 싶으면 'border'를 사용한 결과화면을 보면됨
+      - 웹 페이지의 마지막 output에는 'border'를 넣지 않더라도, 전체 요소에 border를 넣어서 각 요소가 얼만큼의 크기를 차지 하는지 계속 주시하면서 프로젝트를 진행하는 것이 좋음
+      - border-width: 3px; -> 위아래, 양옆 전체적으로 3px 두께의 보더 적용
+      - border-width: 3px 10px; -> 위아래 3px, 양옆 10px
+      - border-width: 3px 10px 20px; -> top, left-right, bottom
+      - border-width: 3px 10px 20px 1px; -> top, right, bottom, left(top 부터 시계방향)
+  - Margin(요소들 사이의 거리)
+      - '+' value를 주면 요소들끼리 서로 멀어짐
+      - '-' value를 주면 요소들끼리 서로 가까워짐
+  - Padding(한 요소안의 콘텐츠와 보더 사이의 거리)
+      - '+' value를 주면 콘텐츠와 보더 사이의 거리가 멀어짐
+      - '-' value를 주면 콘텐츠와 보더 사이의 거리가 가까워짐
+  - Additive Height and Width
+      - Actual width = margin + border + padding + width
+      ex)
+      div {
+        width: 100px;
+        height: 50px;
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid black;
+      } -> Actual width : 132px(100+10+1+5+10+1+5)
+      -> Actual height : 82px(50+10+1+5+10+1+5)
+  - Centering an Element
+      - 하나의 요소를 중앙정렬 하고 싶다면 -> margin: 0 auto; -> text 같은 경우엔 text-align으로 중앙 정렬하면 되지만, text가 아닌 요소들은 위와 같은 설정으로 중앙 정렬이 가능함
+      - { display: block } (또는 block tag(? 이건 내 추측))만 적용가능
+      - The element must not float
+      - 고정되거나 특정한 위치 값을 가지면 안됨
+      - 해당 요소는 width value가 auto가 아닌 특정한 값을 가져야함
+  - box-sizing
+      - div{width: 500px; border-width:50px}
+      -> width : 테두리를 포함하지 않은 크기
+      - div{width: 500px; border-width:50px; box-sizing:border-box;}
+      -> width : 테두리를 포함한 크기
+  - Measurements
+      - Absolute (실제 측정가능한 사이즈로 지정) : px, mm, cm, pt, ...
+      - Fluid (주변 요소들에 대하여 상대적인 사이즈로 지정): 
+          - %, vw, vh
+          - em (for font): 1em(현재 사이즈), .75 또는 75% (현재 사이즈의 75% 정도)
+          - rem (for font): 1rem(root element의 100% 사이즈 적용)
