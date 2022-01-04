@@ -222,3 +222,110 @@
           - %, vw, vh
           - em (for font): 1em(현재 사이즈), .75 또는 75% (현재 사이즈의 75% 정도)
           - rem (for font): 1rem(root element의 100% 사이즈 적용)
+
+- Styling links & lists
+  - Anchor Links
+      - { text-decoration:none; } -> Anchor 태그의 [a]의 링크에 있는 밑줄을 없앰
+  - 대부분 [a] 보단 [button] 으로 링크를 구현하는 경우가 많음
+  - States
+    - 어떤 링크는 파란색, 어떤 링크는 보라색 ... 왜일까 ?
+        - a:link(또는 그냥 a) : 아직 방문하지 않은, 노멀한 상태
+        - a:visited : 이미 방문한
+        - a:hover : 마우스 커서를 링크위로 올렸을 경우 -> 터치스크린에는 적용불가
+        - a:focus : tab 버튼으로 콘텐츠가 focusing 되었을 경우
+        - a:active : 링크가 클릭된 순간(근데 클릭한 순간 다른 웹페이지로 가기 때문에 쓸모가 있을지는 잘...)
+    - 위에 있는 링크의 상태들을 관리할 때 알아둬야할 규칙 (FE 코딩컨벤션 느낌)
+        - a:hover 는 a:link 다음에 와야함
+        - a:visited & a:active 는 a:hover 다음에 와야함
+        - a:link -> a:hover -> a:visited or a:active
+  - Styling Lists
+    - font, margin ... 이거 말고도 사용할 수 있는 스타일링 특성이 많음
+        - list-style-type : idx를 어떤 타입으로 할건지
+            - [od] 의 default 는 넘버링
+            - ul{ list-style-type:upper-alpha; } -> A, B, C ... / 말고도 lower-roman, upper-roman, decimal, decimal-leading-zero... etc
+        - list-style-image
+            - custom image를 사용할 때
+            - ul { list-style-image: square url('icon.gif'); } -> 'icon.gif'로 오더링을 해줘, but 이 파일을 찾지 못하면 square로 오더링 해줘 
+        - list-style-position
+        - list-style(itself)
+    - CSS3 tools
+        - https://css3generator.com/ : 원하는 css 스타일 code를 생성해줌
+        - https://chrispederick.com/
+
+- Advanced Selectors (개별 및 그룹 스타일링)
+  - Styling Specific Objects
+      - type selectors
+      - CSS selectors (tree 형태의 DOM을 이용)
+          - Descendant selectors (자손 결합자) (nav a)
+            : [nav]안의 모든 [a] 를 대상으로
+          - Child selectors (자식 결합자) (nav > a)
+            : [nav]바로 하위에 있는 [a] 를 대상으로
+          - adjacent sibling (인접 형제 결합자) (h1 + ol)
+            : [h1] 바로 뒤에 위치하면서 같은 부모를 공유하는 [ol] 을 대상으로
+      - #id selectors
+        - DOM에 존재하는 single element에 id 부여
+        - CSS 보단 JS로 인한 id binding 할 때 자주 사용
+        - [img src="" id="mainLogo" alt="logo"]
+        -> #mainLogo{...}
+      - .class Selector
+        - DOM에 존재하는 특정 클래스에 대하여 ~
+        - 썸네일 이미지 그룹짓고 스타일링 할 때를 예시로 들었네
+        ex)
+        [img src="cat.jpg" class="thumb" alt ="cat"]
+        [img src="dog.jpg" class="thumb" alt ="dog"]
+        -> .thumb{...}
+  - classes(.) vs. ids(#)
+      - class는 다수 사용가능
+      - id 는 유니크, 한번만 사용가능 (can only be one page at a time)
+  - Narrowing the scope
+    - 페이지를 업데이트 시킬 수 록, class 및 id 네이밍 범주가 넓어질 수 있음
+    - '.' 을 사용하여 범주를 좁혀주자
+        - p.main -> main class를 사용하는 paragraphs(태그)들
+        - header img.special -> [header] 하위에 있으며, special class를 사용하는 [img] 들
+  - Expanding the scope
+    - 여러가지 태그들을 한번에 스타일링 할 경우 ',' 을 사용
+        - p, h1, #main, .special{...}
+        - css overwrite 되면 가장 최신걸 참조함!
+        - !important 를 사용해서 핸들링 가능!
+  - etc
+    - Universal (*) -> every element on the page
+    - Attribute Selectors -> ex) a[href="info.html"]
+        - Operators 사용해서 찾고자 하는 value를 찾음
+            - ^A : A로 시작하는 ~
+            - $A : A로 끝나는 ~
+            - *A : (wildcard)  ex) a[href()="google"] -> href 에 "google"이 포함된 모든 [a] 에 대하여
+            1. gif 파일을 사용하는 모든 [img] 에 대하여... img[src$ = '.gif']
+            2. alt의 text 가 공백인 모든 [img] 에 대하여... img[alt^ = " "](내 추측)
+            3. 특정한 sites로 링크되는 모든 링크(ex. [a])에 대하여... a[href^="http://~"]
+    - Pseudo-Classes
+    - Pseudo-Elements
+    - classes & ids 함께 사용가능 -> [li class="special" id="main" class="dark" id="li.main"/]
+
+- Browser Capabilities
+  - Browsers Differ : 모든 브라우저가 HTML 규약에 일관되도록 진화하고 있지만, 각 브라우저마다의 display 및 adherence(고수)의 방식이 다름
+  - 따라서 css 를 html에 입힌결과가 테스트 브라우저에 잘 보인다 하더라도, 다른 브라우저에도 잘 보이는지 check 하는건 필수임
+  - Handling Stylistic Differences (브라우저마다 다른 display를 핸들링하는 방법)
+    - use default style sheet
+        - 지원하지 않는 css props 때문에 스타일링이 적용되지 않는 부분을 위해 default style sheet(.css)를 두는 것.
+        - 가장 쉬운방법
+        - default style sheet을 제일 먼저 참조하도록 본 style sheet 파일보다 상위에 존재하도록 배치
+  - Handling Unsupported Properties
+    - 모든 브라우저가 모든 HTML5 tags를 지원하는 건 아님
+    - 마찬가지로 모든 브라우저가 모든 CSS3 properties를 지원하는건 아님
+    - 브라우저 접두사를 사용하여 지원하지않는 CSS3 options를 핸들링
+        - -webkit- : Android, Chrome, iOS, Safari
+        - -moz-: Firefox
+        - -ms- : internet Explorer
+        - -o- : Opera
+        ex)
+        h1 {
+          -webkit-border-radius: 10px 10px 10px 10px;
+          border-radius: 10px 10px 10px 10px;
+        }
+    - 브라우저 접두사를 사용할 필요가 있는 properties들
+        - column-count/column-gap (컬럼의수/컬럼간의 거리)
+        - border-radius
+        - gradient (color 그라데이션)
+        - http://caniuse.com/ (참고 사이트)
+
+
