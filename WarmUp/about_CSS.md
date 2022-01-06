@@ -328,4 +328,77 @@
         - gradient (color 그라데이션)
         - http://caniuse.com/ (참고 사이트)
 
+- Designing for Accessibility
+  - POUR guidelines (웹 접근성 4가지 유의점)
+      - Perceivable (인지 가능한) : CSS 연관 多
+          - img_tag 의 'alt' attr
+          - video 또는 audio 에 captions 또는 transcripts 제공
+          - 콘텐츠를 다양한 방식으로 표기 가능하도록 올바르고 적절한 semantic markup(= tag)을 사용
+          - 적절한 색 대비를 사용해서 사용자들이 콘텐츠를 보는 것이 편하도록 coloring
+      - Operable (작동 가능한)
+          - 웹의 모든 기능이 키보드로 사용이 가능하도록
+          - 유저들에게 비디오나 오디오에 대한 컨트롤을 제공
+          - 컨텐츠의 갑작스런 발광 효과를 사용하지 않도록
+          - 웹의 네비게이트 기능을 잘 이용할 수 있도록 기능을 제공 (홈으로 가기, 콘텐츠 찾기, 유저들이 현재 어느 위치에 있는지 확인 가능하도록)
+      - Understandable (이해 가능한) : CSS 연관 多
+          - 짧고 간결하며 직관적인 언어를 사용
+          - 네비게이션 및 정보 구조는 일관적이고 알아볼 수 있도록
+          - 오류에 대한 Alert, Solution 제공
+      - Robust (탄탄한)
+          - Is your site functional across various technologies -> 반응형 웹 생성( smart phone, screen reader, laptop, pensticks, etc...)
+          - 웹 규격 준수
+          - validator.w3c.org, wave.webaim.org 에서 검증
 
+- Pseudo-Classes
+  - DOM 구조에 의해 동적으로 파생되는 요소들
+  ex) a:hover{}
+  - Pseudo-Classes의 종류
+    - Link
+        - :link, :visited
+    - User Action (꼭 link가 아니여도 다른 태그들에 적용 가능한 것도 많음)
+        - :hover, :active, :focus
+    - Forms (or interfaces) (체크박스가 선택되거나 ...)
+        - :enabled, :checked, :disabled
+    - Structural/Positional
+        - :first-child, :last-child, :nth-child(#), :only-child, :empty
+        - :first-of-type, :last-of-type, :only-of-type
+  - DOM 구조에 명시되어있지는 않지만 웹 페이지의 특별한 부분을 스타일링 해주기 위해 사용되는 Pseudo-Classes 들
+    - Textual
+        - :first-letter, :first-line
+    - Positional/Generated
+        - :before, :after
+    - Fragments
+        - ::selection
+
+- Transitions
+  - CSS 속성을 변경할 때 애니메이션 속도를 조절하는 방법을 제공하는 것
+  - Properties
+    - transition-property : size, color, position, etc...
+    - transition-duration : transition의 지속시간
+    - transition-timing : 애니메이션 변화의 속도
+    - transition-delay : transition이 시작되기전에 얼마나 wait 할지
+  - 이거 사용할 때 인터넷의 예시 보면서 사용하자구
+  - 근데 이런것들은 먼저 웹의 좋은 접근성이 확보되 이후에 고려되야할 엑스트라 항목 이란것을 알아두자
+
+- Transforms
+  - 요소의 회전, 크기 조절, 기울이기, 이동 효과 등을 부여
+  - 2D options
+      - translate (이동)
+      - rotate (: #deg)
+      - scale (확장)
+      - skew
+      - matrix
+  - 3D rotate (rotateX/Y/Z/3d)
+
+- Positioning
+  - Position Properties (top, bottom, left, right)
+      - static : default-value
+      - relative : 상대적 위치
+      - absolute : 정확한 위치(좌표)
+          - 다른 요소들이 어디에 위치해 있든간에 무시하고 해당 좌표에 배치
+      - fixed : 고정된 위치
+          - 화면을 스크롤링 해도 그냥 고대로 위치해 있음
+          - 주로 팝업 박스에 사용됨
+          - 네비게이션 bar 같은 거
+          - Drawer 같은거 배치할 때 유용할 것이라 생각이 듬
+      - z index : 웹 화면은 보면 2차원적이지만 z index 를 통해 2차원인 면위에 면을 쌓는 듯한 스타일링을 할 수 있음 (이미지 검색해보면 바로느낌옴)

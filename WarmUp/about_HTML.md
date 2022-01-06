@@ -184,6 +184,7 @@
     - Divs (block)
       - [div] ... </div>
       - pargraph보다 크면서 서로 관련이 있는 컨텐트들 단위로 나누고 싶을 때 <div> 단위로 나눔
+      - tabindex 속성은 사용자가 tab을 눌렀을 때 포커싱되는 순서를 넘버링할 때 사용
 
   - More tags
     - Ordered lists (명시적인 순서를 매길 경우, 숫자(default) 또는 로만 숫자, 알파벳(대문자, 소문자))

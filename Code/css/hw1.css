@@ -1,0 +1,55 @@
+
+
+.top{
+  text-align: center;
+  background: #8ed1fc;
+  height: 150px;
+}
+
+header{
+  color: #697689;
+  font-weight: bold;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+div a{
+  display: inline-block;
+  width: 15%;
+  color: white;
+  background: #697689;
+  border-radius: 5%;
+  font-size: 15px;
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-decoration:none;
+}
+
+.left, .right{
+  float: left;
+  height: 500px;
+}
+
+.right{
+  display: block;
+  margin-left: 10px;
+}
+
+.left{
+  width: 25%;
+  background: #37D67A;
+}
+
+
+.left img{
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  height: 30%;
+}
+
+a:hover{
+  color:#697689;
+  background: white;
+}
