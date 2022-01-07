@@ -112,7 +112,9 @@
           - normal 
           - small-caps : 단어 첫 글자의 크기를 다른 글자보다 크게하고, 소문자를 대문자화
       - font size (크기)
-      - color, background ()
+      - color
+      - background
+          - background : url('../imgs/001.png');
       - alignment (글자 정렬)
           - left
           - right
@@ -120,6 +122,7 @@
           - justify : 해당 요소가 가지고 있는 모든 공간을 최대한 사용해서 ~
           -> word 파일 보면 문장마다 공백의 크기가 다른거 생각하면됨. 약간 공간에 아이템들을 고르게 분포시키는 듯한 느낌
       - line-height (줄 간격)
+      - visibility (show enable/disable)
 
 - Display and Visibility - Part 1
   - Display is Key to Layout
@@ -219,7 +222,7 @@
   - Measurements
       - Absolute (실제 측정가능한 사이즈로 지정) : px, mm, cm, pt, ...
       - Fluid (주변 요소들에 대하여 상대적인 사이즈로 지정): 
-          - %, vw, vh
+          - %, vw, vh(viewport-height (화면대비 높이))
           - em (for font): 1em(현재 사이즈), .75 또는 75% (현재 사이즈의 75% 정도)
           - rem (for font): 1rem(root element의 100% 사이즈 적용)
 
@@ -360,7 +363,7 @@
     - Forms (or interfaces) (체크박스가 선택되거나 ...)
         - :enabled, :checked, :disabled
     - Structural/Positional
-        - :first-child, :last-child, :nth-child(#), :only-child, :empty
+        - :first-child, :last-child, :nth-child(# or even/odd), :only-child, :empty
         - :first-of-type, :last-of-type, :only-of-type
   - DOM 구조에 명시되어있지는 않지만 웹 페이지의 특별한 부분을 스타일링 해주기 위해 사용되는 Pseudo-Classes 들
     - Textual
@@ -370,7 +373,7 @@
     - Fragments
         - ::selection
 
-- Transitions
+- Transitions (프로페셔널한 css 를 적용하는데 중추적인 역할을 하는 것 같음!)
   - CSS 속성을 변경할 때 애니메이션 속도를 조절하는 방법을 제공하는 것
   - Properties
     - transition-property : size, color, position, etc...
@@ -402,3 +405,58 @@
           - 네비게이션 bar 같은 거
           - Drawer 같은거 배치할 때 유용할 것이라 생각이 듬
       - z index : 웹 화면은 보면 2차원적이지만 z index 를 통해 2차원인 면위에 면을 쌓는 듯한 스타일링을 할 수 있음 (이미지 검색해보면 바로느낌옴)
+
+- Accessible Navigation
+  - Navigation
+      - Banner
+      - Search box
+      - Main navigation box
+      - Content well
+  - 페이지의 [title] 설정을 통해 유저들이 지금 내가 어디페이지에 있는지 알 수 있도록 ~
+  - 적절한 제목배치, 계층 구조로 페이지를 구성하여 사용자의 네비게이션을 위한 탐색시간을 줄일 수 있도록 ~
+  - link descriptions
+  - Proper heading hierarchy
+      - 적절한 nested Headings ! -> [h1] 안에 [h2] .. [h2] 안에 [h3] .. 
+      ex) [h1][/h1]
+            [h2][/h2]
+              [h3][/h3]
+              [h3][/h3]
+            [h2][/h2] ...
+      - 단지 [h3] 의 룩이 맘에 들어서 heading hierarchy를 무시하고 [h3]을 남발해버리는 경우가 많은데 이건 정말 안좋은 생각임
+      - 이처럼 tag의 semantic 을 무시하는 html 작성을 지양해야함, 위 같은 경우엔 class 로 일관된 텍스트 스타일링을 해주는 것이 좋음
+  - Off-page headings
+    - 첫 렌더링 페이지에선 보이지 않지만, tab을 통해 웹 요소들에 접근하면 보이도록하는 요소 -> 이를 통해 해당 페이지의 핵심 내용으로 바로 접근할 수 있도록 해줄 때 매우 유용함
+    - 웹 페이지에도 서론 본론이 있는데 Off-page headings 로 스크롤 상단부분의 서론을 스킵하고 본론으로 바로 접근할 때 사용
+    
+    ex)
+    .offpage{
+      position: absolute;
+      left: -1000px;
+    }
+    - Off-page headings 사용할 때, {display:none} or {visibility:hidden} 사용하지 말기 -> 해당 웹 페이지를 리뷰하려는 사람에게 혼동을 줄 수 있음
+
+  - Meaningful link text
+      - 의미론적으로 적절한 링크 텍스트를 사용하자
+      -> "here", "click here", "read this", "more" 이런 것 보단 좀 더 해당 링크에 대한 직관적인 text가 좋을 거임
+
+  - Make sure that you're planning for everyone
+    - 웹 개발을 마무리하기 전에 최대한 많은 사람들에게 웹 페이지를 제공할 수 있도록 해야함 
+    - 마우스로 밖에 접근할 수 없는 상황을 생각해보거나 ... 단색밖에 존재하지 않는 웹 페이지를 생각해보거나 ...
+
+- little tiny tweaks -> make it look a little bit more professional
+  - A | B | C
+      - A, B, C 전체에 border-right 적용
+      - :last-child {border-right:none;} 적용
+  - sub-menu
+      - 첫 렌더링시엔 보이진 않지만, 마우스 커서를 올렸을 때(:hover), 보여지는 sub-menu들 -> display:none 에서 display: block 으로 변경
+      
+      ex)
+      nav li ul{
+        position: absolute;
+        display: none;
+        width: inherit;
+      }
+
+      nav li:hover ul{
+        display: block;
+      }
