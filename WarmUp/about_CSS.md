@@ -115,6 +115,8 @@
       - color
       - background
           - background : url('../imgs/001.png');
+          - background-image : url('../imgs/001.png');
+          - background-color : #CCEECC;
       - alignment (글자 정렬)
           - left
           - right

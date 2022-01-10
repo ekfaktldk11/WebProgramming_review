@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const check = () => {
+        var email1 = document.getElementById('email_addr');
+        var email2 = document.getElementById('email_repeat');
+        if (email1.value != email2.value) {
+          alert('The two emails must match!!');
+          return false;
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" /><br />
+      <label>Email: <input type="email" name="email" /></label><br />
+      <label for="birth">Birth</label>
+      <input type="date" id="birth" name="birth" /><br />
+      <input type="submit" value="Click Here" />
+    </form>
+
+    <form>
+      <label
+        >Preferred email address:
+        <input
+          type="email"
+          id="email_addr"
+          name="email1"
+          value="me@me.com"
+          required /></label
+      ><br />
+      <label
+        >Preferred email address:
+        <input
+          type="email"
+          id="email_repeat"
+          name="email2"
+          required
+          onchange="return check();" /></label
+      ><br />
+      <input type="submit" value="Confirm Emails" onclick="return check();" />
+    </form>
+    <form>
+      Favorite Foods<br />
+      <label><input type="checkbox" name="food" value="pizza" />Pizza</label
+      ><br />
+      <label><input type="checkbox" name="food" value="chips" />Chips</label
+      ><br />
+      <label><input type="checkbox" name="food" value="kale" />Kale</label
+      ><br />
+      <input type="submit">
+    </form>
+    <form>
+      <label><input type="radio" name="gender" value="male" />Male</label
+      ><br />
+      <label><input type="radio" name="gender" value="female" />Female</label
+      ><br />
+      <input type="submit">
+    </form>
+  </body>
+</html>
