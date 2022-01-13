@@ -211,7 +211,7 @@
       } -> Actual width : 132px(100+10+1+5+10+1+5)
       -> Actual height : 82px(50+10+1+5+10+1+5)
   - Centering an Element
-      - 하나의 요소를 중앙정렬 하고 싶다면 -> margin: 0 auto; -> text 같은 경우엔 text-align으로 중앙 정렬하면 되지만, text가 아닌 요소들은 위와 같은 설정으로 중앙 정렬이 가능함
+      - 하나의 요소를 중앙정렬 하고 싶다면 -> margin: 0 auto; -> text 같은 경우엔 text-align으로 중앙 정렬하면 되지만, text가 아닌 요소들은 위와 같은 설정으로 중앙 정렬이 가능함 (꼭 텍스트가 아니여도 중앙 정렬이 되는디 ..?)
       - { display: block } (또는 block tag(? 이건 내 추측))만 적용가능
       - The element must not float
       - 고정되거나 특정한 위치 값을 가지면 안됨
